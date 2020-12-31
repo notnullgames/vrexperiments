@@ -16,7 +16,7 @@
     "vercel": "^21.0.1"
   },
   "scripts": {
-    "start": "parcel src/index.html",
+    "start": "parcel serve --https src/index.html",
     "build": "parcel build src/index.html -d public",
     "deploy": "vercel --prod"
   },

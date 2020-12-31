@@ -1,0 +1,34 @@
+{
+  "name": "vrexperiments",
+  "version": "0.0.0",
+  "description": "Playing around with VR",
+  "main": "index.js",
+  "dependencies": {
+    "@react-three/drei": "^2.2.13",
+    "@react-three/xr": "^1.1.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-three-fiber": "^5.3.10",
+    "three": "^0.124.0"
+  },
+  "devDependencies": {
+    "parcel": "^1.12.4",
+    "vercel": "^21.0.1"
+  },
+  "scripts": {
+    "start": "parcel src/index.html -d public",
+    "build": "parcel build src/index.html -d public",
+    "deploy": "vercel --prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/notnullgames/vrexperiments.git"
+  },
+  "keywords": [],
+  "author": "David Konsumer <konsumer@jetboystudio.com> (http://konsumer.js.org)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/notnullgames/vrexperiments/issues"
+  },
+  "homepage": "https://github.com/notnullgames/vrexperiments#readme"
+}

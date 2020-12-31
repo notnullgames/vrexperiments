@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { render } from 'react-dom'
 import { useThree } from 'react-three-fiber'
 import { VRCanvas, DefaultXRControllers } from '@react-three/xr'
-import { Stars, Text, OrbitControls, Sphere } from '@react-three/drei'
+import { Stars, Text, OrbitControls, Sphere, useMatcapTexture, Html } from '@react-three/drei'
+
+const SphereMatcap = ({ matcap, matcapSize, children, ...props }) => {
+  const [ texture ] = useMatcapTexture(matcap, matcapSize)
+  return (
+    <Sphere {...props}>
+      <meshMatcapMaterial matcap={texture} />
+      {children}
+    </Sphere>
+  )
+}
 
 const App = () => (
   <VRCanvas>
@@ -20,13 +30,14 @@ const App = () => (
     >
       hello world!
     </Text>
-    {[...Array(100)].map((v, i) => (
-      <Sphere position={[(2 * i) - 100, 0, 0]}>
-        <meshPhongMaterial attach="material" color="blue" />
-      </Sphere>
-    ))}
     <gridHelper args={[100, 100, `white`, `green`]} />
+    <Suspense fallback={null}>
+    {[...Array(50)].map((v, i) => (
+      <SphereMatcap key={i} matcap={Math.floor(Math.random() * 640)} matcapSize={64} position={[(2 * i) - 50, 0, 0]} castShadow />
+    ))}
+    </Suspense>
   </VRCanvas>
 )
+
 
 render(<App />, document.getElementById('root'))
